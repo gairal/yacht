@@ -4,17 +4,18 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 7,
     sourceType: 'module',
+    parser: 'babel-eslint',
   },
   env: {
     browser: true,
+    es6: true,
   },
   globals: {
     ga: true,
     LOG_LEVEL: true,
   },
   plugins: ['prettier', 'vue'],
-  extends: ['airbnb', 'prettier'],
-  parser: 'babel-eslint',
+  extends: ['airbnb-base', 'prettier', 'plugin:vue/strongly-recommended'],
   rules: {
     'prettier/prettier': [
       'error',

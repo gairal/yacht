@@ -3,9 +3,9 @@ html(xmlns='http://www.w3.org/1999/xhtml')
 
   include head.pug
 
-  body
-    header
-    main.container.mx-auto.p-4.flex.flex-col.items-center.justify-center
-      h1  Y.A.C.H.T.
-      #app
-        block content
+  body.container.mx-auto.font-handwriting.h-screen.flex.flex-col.items-center.justify-center
+    header.mb-4
+      h1.text-5xl  Y.A.C.H.T.
+      sub.text-grey-light.text-xs Yet Another Conversion Handy Tool
+    main#app.w-full.p-4.md-p-0
+      block content

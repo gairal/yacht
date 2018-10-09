@@ -32,8 +32,6 @@ const init = id => {
   ga('require', 'maxScrollTracker');
 
   ga('send', 'pageview');
-
-  console.log('Analytics enabled'); // eslint-disable-line no-console
 };
 
 // Execute App Init

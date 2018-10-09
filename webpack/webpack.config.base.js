@@ -33,6 +33,7 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: './src/img', to: 'img' },
       { from: './src/root', to: '' },
+      { from: './src/db', to: 'db' },
     ]),
     new WriteFilePlugin(),
     new VueLoaderPlugin(),

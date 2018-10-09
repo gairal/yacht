@@ -4,3 +4,15 @@
 body {
   transition: all 2s ease;
 }
+
+.multiselect {
+  .multiselect__select {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .multiselect__tags {
+    @apply flex items-center h-16 w-full;
+    border-radius: 0;
+  }
+}
