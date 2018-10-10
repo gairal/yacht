@@ -9,3 +9,5 @@ html(xmlns='http://www.w3.org/1999/xhtml')
       sub.text-grey-light.text-xs Yet Another Conversion Handy Tool
     main#app.w-full.p-4.md-p-0
       block content
+    script.
+      if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js', { scope: '../' });

@@ -893,7 +893,7 @@ module.exports = {
     negativeMargin: false,
     opacity: false,
     outline: false,
-    overflow: false,
+    overflow: [],
     padding: ['responsive'],
     pointerEvents: false,
     position: ['responsive'],

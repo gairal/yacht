@@ -2,12 +2,22 @@
   <section>
     <m-select :options="ingredients" class="mb-4" :select="changeIngredient" :value="ingredient"></m-select>
     <div class="units flex justify-between flex-col md:flex-row">
-      <m-select placeholder="from" :options="units" class="mb-4" :select="changeFrom" :value="from"></m-select>
+      <quantity :change="changeQuantity" :value="quantity"></quantity>
       <div class="mr-4 hidden md:block"></div>
-      <m-select placeholder="to" :options="units" class="mb-4" :select="changeTo" :value="to"></m-select>
+      <m-select placeholder="from" :options="units" class="mb-4" :select="changeFrom" :value="from"></m-select>
     </div>
-    <quantity :change="changeQuantity" :value="quantity"></quantity>
-    <p class="text-center text-10xl p-4" :class="{ 'bg-grey-light': res !== '' }">
+    <div class="text-center mb-4">
+      <svg
+        width="6rem"
+        viewBox="0 0 220.682 220.682">
+        <g>
+          <polygon points="110.341,220.682 210.043,120.98 181.758,92.695 110.341,164.113 38.924,92.695 10.639,120.98 	"/>
+          <polygon points="210.043,28.284 181.758,0 110.341,71.418 38.924,0 10.639,28.284 110.341,127.986 	"/>
+        </g>
+      </svg>
+    </div>
+    <m-select placeholder="to" :options="units" class="mb-4" :select="changeTo" :value="to"></m-select>
+    <p class="text-center text-10xl p-4 overflow-hidden" :class="{ 'bg-grey-light': res !== '' }">
       {{ res }}
     </p>
   </section>
@@ -40,6 +50,8 @@
         .then(db => {
           this.units = db.units;
           this.ingredients = db.ingredients;
+          this.ratios = db.ratios;
+          this.convert();
         })
         .catch(e => console.error(e));
     },
@@ -68,27 +80,40 @@
       },
       changeQuantity(qty) {
         this.quantity = qty;
-        this.converse();
+        this.convert();
       },
       changeFrom(from) {
         this.from = from;
-        this.converse();
+        this.convert();
       },
       changeTo(to) {
         this.to = to;
-        this.converse();
+        this.convert();
       },
       changeIngredient(ingredient) {
         this.ingredient = ingredient;
-        this.converse();
+        this.convert();
       },
-      converse() {
+      convert() {
+        this.res = '';
+
         if (
           !this.ratios
           || !this.quantity
           || !this.from
           || !this.to) return;
         this.save();
+
+        const fromRatios = this.ratios[this.from];
+        if (!fromRatios) return;
+        let ratio = fromRatios[this.to];
+        if (!ratio) return;
+
+        if (isNaN(ratio)) {
+          ratio = 1;
+        }
+
+        this.res = Math.round(this.quantity * ratio * 100) / 100;
       }
     },
   }
