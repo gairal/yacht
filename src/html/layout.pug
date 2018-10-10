@@ -4,10 +4,12 @@ html(xmlns='http://www.w3.org/1999/xhtml')
   include head.pug
 
   body.container.mx-auto.font-handwriting.h-screen.flex.flex-col.items-center.justify-center
-    header.mb-4
+    header.p-12.flex.flex-col.justify-center
       h1.text-5xl  Y.A.C.H.T.
       sub.text-grey-light.text-xs Yet Another Conversion Handy Tool
-    main#app.w-full.p-4.md-p-0
+    main#app.w-full.p-4.md-p-0.flex-1.flex.items-center.justify-center
       block content
+    footer.p-4
+      a.no-underline.text-xs.text-grey-light(href='https://gairal.rocks', target='_blank') gairal.rocks
     script.
       if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js', { scope: '../' });

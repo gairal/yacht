@@ -6,13 +6,15 @@ body {
 }
 
 .multiselect {
+  flex: 1;
+
   .multiselect__select {
     top: 50%;
     transform: translateY(-50%);
   }
 
   .multiselect__tags {
-    @apply flex items-center h-10 w-full;
+    @apply flex items-center h-10 w-full h-full text-center;
     border-radius: 0;
   }
 }
