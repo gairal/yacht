@@ -101,7 +101,8 @@
           !this.ratios
           || !this.quantity
           || !this.from
-          || !this.to) return;
+          || !this.to
+          || !this.ingredient) return;
         this.save();
         let res = 0;
 
