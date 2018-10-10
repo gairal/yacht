@@ -47,6 +47,11 @@
         val: null,
       }
     },
+    watch: {
+      value(val, old) {
+        if (old) this.val = val;
+      },
+    },
     beforeUpdate() {
       if (this.init) return;
       if (this.value) {

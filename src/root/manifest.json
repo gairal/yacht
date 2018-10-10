@@ -1,0 +1,16 @@
+{
+  "short_name": "yacht",
+  "name": "Yet Another Conversion Handy Tool",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "type": "image/ico",
+      "sizes": "32x32"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#fff",
+  "display": "fullscreen",
+  "scope": "/",
+  "theme_color": "#fff"
+}
