@@ -1,7 +1,7 @@
 /* eslint-disable */
 self.addEventListener('install', function (e) {
   try {
-    e.waitUntil(caches.open('yacht').then(function (cache) {
+    e.waitUntil(caches.open('yacht').then(function(cache) {
       return cache.addAll(
         [
           '/',
@@ -15,7 +15,7 @@ self.addEventListener('install', function (e) {
 });
 
 self.addEventListener('fetch', function (event) {
-  event.respondWith(caches.match(event.request).then(function (response) {
+  event.respondWith(caches.match(event.request).then(function(response) {
     return response || fetch(event.request);
   }).catch(err => console.error(err)));
 });

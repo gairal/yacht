@@ -6,23 +6,11 @@
       <div class="mr-4"></div>
       <m-select placeholder="from" :options="units" :select="changeFrom" :value="from" label="name"></m-select>
     </div>
-    <button class="bg-transparent p-4 mb-4 flex-1" @click="invert">
-      <svg
-        class="w-10"
-        viewBox="0 0 28.641 28.641">
-        <g>
-          <path d="M9.84,1.314l8.257,9.98c0,0,1.254,1.185-0.107,1.185s-4.655,0-4.655,0s0,0.797,0,2.026c0,3.509,0,9.9,0,12.497
-            c0,0,0.188,0.705-0.885,0.705c-1.076,0-5.781,0-6.548,0c-0.768,0-0.747-0.588-0.747-0.588c0-2.531,0-9.133,0-12.53
-            c0-1.1,0-1.817,0-1.817s-2.64,0-4.296,0S0.45,11.535,0.45,11.535S7.476,2.209,8.455,1.23C9.164,0.519,9.84,1.314,9.84,1.314z"/>
-          <path d="M18.802,27.332l-8.259-9.978c0,0-1.25-1.188,0.109-1.188s4.65,0,4.65,0s0-0.802,0-2.027c0-3.511,0-9.899,0-12.498
-            c0,0-0.181-0.708,0.89-0.708c1.074,0,5.781,0,6.546,0c0.768,0,0.747,0.592,0.747,0.592c0,2.528,0,9.136,0,12.526
-            c0,1.101,0,1.819,0,1.819s2.641,0,4.298,0c1.654,0,0.406,1.238,0.406,1.238s-7.022,9.321-7.999,10.302
-            C19.479,28.125,18.802,27.332,18.802,27.332z"/>
-        </g>
-      </svg>
+    <button class="bg-transparent p-4 mb-4 flex-1 h-0 h-full" @click="invert">
+      <img class="max-h-full" src="img/icons/revert.svg" alt="revert" />
     </button>
     <m-select placeholder="to" :options="units" class="mb-4" :select="changeTo" :value="to" label="name"></m-select>
-    <p class="text-center text-5xl md:text-10xl p-4 overflow-hidden" :class="{ 'border-b': res !== '' }">
+    <p class="text-center text-8xl md:text-10xl p-4 overflow-hidden" :class="{ 'border-b': res !== '' }">
       {{ res }}
     </p>
   </section>

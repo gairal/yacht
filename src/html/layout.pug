@@ -1,5 +1,5 @@
 doctype html
-html(xmlns='http://www.w3.org/1999/xhtml')
+html(xmlns='http://www.w3.org/1999/xhtml', lang='en')
 
   include head.pug
 
@@ -9,7 +9,9 @@ html(xmlns='http://www.w3.org/1999/xhtml')
       sub.text-grey-light.text-xs Yet Another Conversion Handy Tool
     main#app.w-full.p-4.md-p-0.flex-1.flex.items-center.justify-center
       block content
-    footer.p-4
-      a.no-underline.text-xs.text-grey-light(href='https://gairal.rocks', target='_blank') gairal.rocks
+    footer.p-4.text-xs.text-grey-light.text-center
+      a.no-underline.text-grey-light(href='https://gairal.rocks', target='_blank', rel='noopener') gairal.rocks
+      div.
+        Icons by <a href="http://www.freepik.com" title="Freepik">Freepik</a> - licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank" rel="noopener">CC 3.0 BY</a>
     script.
       if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js', { scope: '../' });
