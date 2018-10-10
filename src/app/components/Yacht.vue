@@ -1,9 +1,9 @@
 <template>
   <section>
     <m-select :options="ingredients" class="mb-4" :select="changeIngredient" :value="ingredient"></m-select>
-    <div class="units flex justify-between flex-col md:flex-row">
+    <div class="units flex justify-between">
       <quantity :change="changeQuantity" :value="quantity"></quantity>
-      <div class="mr-4 hidden md:block"></div>
+      <div class="mr-4"></div>
       <m-select placeholder="from" :options="units" class="mb-4" :select="changeFrom" :value="from" label="name"></m-select>
     </div>
     <div class="text-center mb-4">
