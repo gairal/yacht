@@ -55,9 +55,8 @@
       } else if (!this.placeholder && this.options.length) {
         this.val = this.options[0];
         this.init = true;
+        this.select(this.val);
       }
-    },
-    methods: {
     }
   }
 </script>
