@@ -1,7 +1,7 @@
 <template>
   <input
     v-model="value"
-    class="border w-full h-16 text-3xl p-4 mb-4"
+    class="border w-full h-10 text-3xl p-4 mb-4"
     type="number"
     placeholder="42"
     @keypress="isNumber" />

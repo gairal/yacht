@@ -6,7 +6,9 @@
     :searchable="true"
     :close-on-select="true"
     :allow-empty="false"
-    :placeholder="placeholder ? placeholder : undefined"></multiselect>
+    :label="label"
+    :placeholder="placeholder ? placeholder : undefined">
+    </multiselect>
 </template>
 
 <script>
@@ -26,8 +28,12 @@
         type: Function,
         required: true,
       },
-      value: {
+      label: {
         type: String,
+        required: false,
+        default: null,
+      },
+      value: {
         required: false,
         default: null,
       },

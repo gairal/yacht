@@ -4,11 +4,11 @@
     <div class="units flex justify-between flex-col md:flex-row">
       <quantity :change="changeQuantity" :value="quantity"></quantity>
       <div class="mr-4 hidden md:block"></div>
-      <m-select placeholder="from" :options="units" class="mb-4" :select="changeFrom" :value="from"></m-select>
+      <m-select placeholder="from" :options="units" class="mb-4" :select="changeFrom" :value="from" label="name"></m-select>
     </div>
     <div class="text-center mb-4">
       <svg
-        width="6rem"
+        class="w-10"
         viewBox="0 0 220.682 220.682">
         <g>
           <polygon points="110.341,220.682 210.043,120.98 181.758,92.695 110.341,164.113 38.924,92.695 10.639,120.98 	"/>
@@ -16,8 +16,8 @@
         </g>
       </svg>
     </div>
-    <m-select placeholder="to" :options="units" class="mb-4" :select="changeTo" :value="to"></m-select>
-    <p class="text-center text-10xl p-4 overflow-hidden" :class="{ 'bg-grey-light': res !== '' }">
+    <m-select placeholder="to" :options="units" class="mb-4" :select="changeTo" :value="to" label="name"></m-select>
+    <p class="text-center text-5xl md:text-10xl p-4 overflow-hidden" :class="{ 'bg-grey-light': res !== '' }">
       {{ res }}
     </p>
   </section>
@@ -103,17 +103,37 @@
           || !this.from
           || !this.to) return;
         this.save();
+        let res = 0;
 
-        const fromRatios = this.ratios[this.from];
-        if (!fromRatios) return;
-        let ratio = fromRatios[this.to];
-        if (!ratio) return;
+        // First check we have our from and to ratii
+        const fromRatio = this.ratios[this.from.type][this.from.name];
+        const toRatio = this.ratios[this.to.type][this.to.name];
+        if (!fromRatio || !toRatio) return;
 
-        if (isNaN(ratio)) {
-          ratio = 1;
+        // Transform the value to base unit (l or g)
+        res = this.quantity * 1 / fromRatio;
+
+        if (this.from.type !== this.to.type) {
+          // Conversion weight to volume or inverse
+          let ingredientRatio = this.ratios.ingredients[this.ingredient];
+          if (!ingredientRatio) return;
+          if (isNaN(ingredientRatio)) {
+            ingredientRatio = this.ratios.ingredients[ingredientRatio];
+          }
+
+          if (this.from.type === 'volume') {
+            // conversion from grams to liters
+            res = res * ingredientRatio;
+          } else {
+            // conversion from liters to grams
+            res = res * 1 / ingredientRatio;
+          }
         }
 
-        this.res = Math.round(this.quantity * ratio * 100) / 100;
+        // Then transform the base unit to the expected unit
+        res = res * toRatio;
+
+        this.res = res ? Math.round(res * 1000) / 1000 : '';
       }
     },
   }
